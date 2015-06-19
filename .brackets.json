@@ -1,0 +1,8 @@
+{
+    "sass.compiler": "ruby",
+    "sass.compass": true,
+    "sass.options":{
+    "outputStyle":"compressed",
+    "sourceComments": false
+    }
+}
