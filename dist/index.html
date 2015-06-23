@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Eljuri v1.0a</title>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/fonts/fonts.css">
+    <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
     <link href="css/main.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-touch.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body ng-app="myApp">
 <div class="container" ng-controller="mainController as main">
-    <div class="score" >
-        <i class="fa fa-2x" ng-class="score == -1 ? 'fa-circle-o': ( score == 0 ? 'fa-times-circle' : 'fa-check-circle')" ng-repeat="score in main.scores track by $index"></i>
-    </div>
-    <div class="question" ng-class="{'active': main.isSet(q.index)}" ng-repeat="q in main.questions">
+    <div class="question" ng-class="{'active': isSet(q.index),'left':$index<active-1,'right':$index>active-1}" ng-repeat="q in main.questions">
         <div class="q-container">
             <h1 class="q-title">{{q.question}}</h1>
-            <hr/>
+            <br />
             <div class="q-options">
-                <div class="q-option" ng-repeat="option in q.options">
+                <div class="q-option" ng-click="main.processAnswer(q.index,$index)" ng-repeat="option in q.options track by $index">
                     <span >{{option}}</span>
+                    <span class="fa fa-square-o pull-right opt" id="opt-{{q.index}}-{{$index}}"></span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bnt-next" ng-click="main.gotoNext()">
-    Siguiente</div>
+    <audio id="good">
+        <source src="audio/ladrido.mp3"></source>
+    </audio>
+    <audio id="bad">
+        <source src="audio/howl.mp3"></source>
+    </audio>
     </div>
+<div id="winner">
+</div>
 </body>
 </html>
