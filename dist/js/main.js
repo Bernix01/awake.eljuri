@@ -73,7 +73,7 @@ app.controller("mainController", function ($scope, $timeout) {
                         rights++;
                 }
                 if(rights>=2)
-                    $('#winner').addClass('win');
+                    $('.container').addClass('win');
             }
         } else {
             if(this.scores[q-1]==-1)
