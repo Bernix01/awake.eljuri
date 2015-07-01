@@ -20,7 +20,7 @@ body,html{
         background-image:url(../img/bg_ipad.jpg);
     }
     @include breakpoint(800px){
-        background-image:url(../img/bg_android.jpg);
+        background-image:url(../img/bg_ipad.jpg);
     }
 }
 .question{

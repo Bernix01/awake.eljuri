@@ -18,9 +18,9 @@
             <h1 class="q-title">{{q.question}}</h1>
             <br />
             <div class="q-options">
-                <div class="q-option" ng-click="main.processAnswer(q.index,$index)" ng-repeat="option in q.options track by $index">
+                <div class="q-option" ng-click="main.processAnswer($parent.$index,$index)" ng-repeat="option in q.options track by $index">
                     <span >{{option}}</span>
-                    <span class="fa fa-square-o pull-right opt" id="opt-{{q.index}}-{{$index}}"></span>
+                    <span class="fa fa-square-o pull-right opt" id="opt-{{$parent.$index}}-{{$index}}"></span>
                 </div>
             </div>
         </div>
