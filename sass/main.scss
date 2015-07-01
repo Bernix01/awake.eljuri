@@ -10,17 +10,23 @@ body,html{
     width: 100%;
     height: 100%;
 }
+.containerbig{
+    width: 100%;
+    position: relative;
+    height: 100%;
+
+}
 .container{
     color: white;
         width: 100%;
         height: 100%;
   background-size: contain;
-        background-image:url(../img/bg_ipad.jpg);
+        background-image:url(../img/Pagfondo.jpg);
     @include breakpoint(768px){
         background-image:url(../img/bg_ipad.jpg);
     }
     @include breakpoint(800px){
-        background-image:url(../img/bg_ipad.jpg);
+        background-image:url(../img/Pagfondo.jpg);
     }
 }
 .question{

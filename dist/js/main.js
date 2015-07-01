@@ -86,8 +86,16 @@ app.controller("mainController", function ($scope, $timeout) {
                     if(this.scores[a]==1)
                         rights++;
                 }
-                if(rights>=2)
+                console.log("rights: "+rights)
+                if(rights>=2){
+                    $timeout(function() {
                     $('.container').addClass('win');
+                    }, 3500)
+                }else{
+                    $timeout(function() {
+                    $('.containerbig').addClass('win');
+                    }, 3500)
+                }
             }
         } else {
             if(this.scores[q]==-1)
@@ -100,12 +108,30 @@ app.controller("mainController", function ($scope, $timeout) {
                 rightopt.fadeOut(100).delay(500).removeClass("fa-square-o").addClass("fa-check-square-o").fadeIn();
                 var audio3 = document.getElementById("good");
             audio3.play();
-            }, 3000)
+            }, 2500)
             $timeout(function () {
                 $scope.gotoNext();
             }, 5000);
             opt.fadeOut(100).delay(500).removeClass("fa-square-o").addClass("fa-minus-square").fadeIn();
+            if(q===2){
+                var rights = 0;
+                for(a=0;a<this.scores.length;a++){
+                    if(this.scores[a]==1)
+                        rights++;
+                }
+                console.log("rights: "+rights)
+                if(rights>=2){
+                    $timeout(function() {
+                    $('.container').addClass('win');
+                    }, 5500)
+                }else{
+                    $timeout(function() {
+                    $('.containerbig').addClass('win');
+                    }, 5500)
+                }
+            }
         }
         console.log(this.scores);
+
     }
 });

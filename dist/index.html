@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height">
     <title>Eljuri v1.0a</title>
     <link rel="stylesheet" href="css/fonts/fonts.css">
     <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
@@ -12,6 +13,7 @@
     <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body ng-app="myApp">
+<div class="containerbig">
 <div class="container" ng-controller="mainController as main">
     <div class="question" ng-class="{'active': isSet(q.index),'left':$index<active-1,'right':$index>active-1}" ng-repeat="q in main.questions">
         <div class="q-container">
@@ -34,6 +36,10 @@
     </div>
 <div id="winner">
     <img src="img/Ganaste.jpg" width="100%" />
+</div>
+</div>
+<div id="loser">
+    <img src="img/NoJugar.jpg" width="100%" />
 </div>
 </body>
 </html>
