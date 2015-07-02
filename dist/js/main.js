@@ -43,13 +43,13 @@ var questions = [
 ];
 var app;
 var uquestions = []
-var chosen = [-1,-1,-1,-1]
+var chosen = [-1, -1, -1, -1]
 var a = 0
-while(a<3){
-    var temp = Math.floor((Math.random()*3))
-    if(chosen[temp]!=0){
+while (a < 3) {
+    var temp = Math.floor((Math.random() * 3))
+    if (chosen[temp] != 0) {
         uquestions.push(questions[temp])
-        chosen[temp]=0
+        chosen[temp] = 0
         a++
         console.log(temp)
     }
@@ -70,63 +70,71 @@ app.controller("mainController", function ($scope, $timeout) {
     this.processAnswer = function (q, o) {
         var opt = $('#opt-' + q + '-' + o);
         console.log(q + "   " + o);
-        console.log("right: "+this.questions[q].right)
+        console.log("right: " + this.questions[q].right)
         if (this.questions[q].right == o + 1) {
-            if(this.scores[q]==-1)
-                this.scores[q]= 1;
+            if (this.scores[q] == -1)
+                this.scores[q] = 1;
             var audio = document.getElementById("good");
             audio.play();
             opt.fadeOut(100).delay(500).removeClass("fa-square-o").addClass("fa-check-square-o").fadeIn();
             $timeout(function () {
                 $scope.gotoNext();
             }, 1500);
-            if(q===2){
+            if (q === 2) {
                 var rights = 0;
-                for(a=0;a<this.scores.length;a++){
-                    if(this.scores[a]==1)
+                for (a = 0; a < this.scores.length; a++) {
+                    if (this.scores[a] == 1)
                         rights++;
                 }
-                console.log("rights: "+rights)
-                if(rights>=2){
-                    $timeout(function() {
-                    $('.container').addClass('win');
+                console.log("rights: " + rights)
+                if (rights >= 2) {
+                    $timeout(function () {
+                        $('.container').addClass('win');
+                        var audio2 = document.getElementById("yeah");
+                        audio2.play();
                     }, 3500)
-                }else{
-                    $timeout(function() {
-                    $('.containerbig').addClass('win');
+                } else {
+                    $timeout(function () {
+                        $('.containerbig').addClass('win');
+                        var audio2 = document.getElementById("noyeah");
+                        audio2.play();
                     }, 3500)
                 }
             }
         } else {
-            if(this.scores[q]==-1)
-                this.scores[q]= 0;
+            if (this.scores[q] == -1)
+                this.scores[q] = 0;
             var audio = document.getElementById("bad");
             audio.play();
-            var rightopt = $('#opt-' + q + '-' +(this.questions[q].right-1))
-            console.log('opt-' + q + '-' + (this.questions[q].right-1))
-            $timeout(function(){
+            var rightopt = $('#opt-' + q + '-' + (this.questions[q].right - 1))
+            console.log('opt-' + q + '-' + (this.questions[q].right - 1))
+            $timeout(function () {
                 rightopt.fadeOut(100).delay(500).removeClass("fa-square-o").addClass("fa-check-square-o").fadeIn();
                 var audio3 = document.getElementById("good");
-            audio3.play();
+                audio3.play();
             }, 2500)
             $timeout(function () {
                 $scope.gotoNext();
             }, 5000);
             opt.fadeOut(100).delay(500).removeClass("fa-square-o").addClass("fa-minus-square").fadeIn();
-            if(q===2){
+            if (q === 2) {
                 var rights = 0;
-                for(a=0;a<this.scores.length;a++){
-                    if(this.scores[a]==1)
+                for (a = 0; a < this.scores.length; a++) {
+                    if (this.scores[a] == 1)
                         rights++;
                 }
-                console.log("rights: "+rights)
-                if(rights>=2){
-                    $timeout(function() {
-                    $('.container').addClass('win');
+                console.log("rights: " + rights)
+                if (rights >= 2) {
+                    $timeout(function () {
+                        $('.container').addClass('win');
+                        var audio2 = document.getElementById("yeah");
+                        audio2.play();
                     }, 5500)
-                }else{
-                    $timeout(function() {
-                    $('.containerbig').addClass('win');
+                } else {
+                    $timeout(function () {
+                        $('.containerbig').addClass('win');
+                        var audio2 = document.getElementById("noyeah");
+                        audio2.play();
                     }, 5500)
                 }
             }
