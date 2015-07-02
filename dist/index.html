@@ -27,6 +27,16 @@
             </div>
         </div>
     </div>
+    </div>
+<div id="winner">
+   <a href="navto://relative/current#first" >
+       <img src="img/Ganaste.jpg" width="100%" /></a>
+</div>
+</div>
+<div id="loser">
+   <a href="navto://relative/current#first" >
+    <img src="img/NoJugar.jpg" width="100%" /></a>
+</div>
     <audio id="good">
         <source src="audio/ladrido.mp3"></source>
     </audio>
@@ -39,13 +49,18 @@
     <audio id="noyeah">
         <source src="audio/fail.mp3"></source>
     </audio>
-    </div>
-<div id="winner">
-    <img src="img/Ganaste.jpg" width="100%" />
-</div>
-</div>
-<div id="loser">
-    <img src="img/NoJugar.jpg" width="100%" />
-</div>
+    <audio id="yeah2">
+        <source src="audio/clap2.mp3"></source>
+    </audio>
+    <audio id="noyeah2">
+        <source src="audio/fail2.mp3"></source>
+    </audio>
+    <audio id="bg" >
+        <source src="audio/sonido.mp3"></source>
+    </audio>
+<script type="text/javascript">
+var bg = document.getElementById("bg");
+bg.play();
+</script>
 </body>
 </html>

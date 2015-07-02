@@ -1,3 +1,5 @@
+
+
 var score = [-1, -1, -1];
 var questions = [
     {
@@ -71,6 +73,11 @@ app.controller("mainController", function ($scope, $timeout) {
         var opt = $('#opt-' + q + '-' + o);
         console.log(q + "   " + o);
         console.log("right: " + this.questions[q].right)
+        var ganar = document.getElementById("yeah");
+        var perder = document.getElementById("noyeah");
+        var ganar2 = document.getElementById("yeah2");
+        var perder2 = document.getElementById("noyeah2");
+
         if (this.questions[q].right == o + 1) {
             if (this.scores[q] == -1)
                 this.scores[q] = 1;
@@ -88,16 +95,14 @@ app.controller("mainController", function ($scope, $timeout) {
                 }
                 console.log("rights: " + rights)
                 if (rights >= 2) {
+                    ganar.play();
                     $timeout(function () {
                         $('.container').addClass('win');
-                        var audio2 = document.getElementById("yeah");
-                        audio2.play();
                     }, 3500)
                 } else {
+                        perder.play();
                     $timeout(function () {
                         $('.containerbig').addClass('win');
-                        var audio2 = document.getElementById("noyeah");
-                        audio2.play();
                     }, 3500)
                 }
             }
@@ -125,16 +130,14 @@ app.controller("mainController", function ($scope, $timeout) {
                 }
                 console.log("rights: " + rights)
                 if (rights >= 2) {
+                        ganar2.play();
                     $timeout(function () {
                         $('.container').addClass('win');
-                        var audio2 = document.getElementById("yeah");
-                        audio2.play();
                     }, 5500)
                 } else {
+                        perder2.play();
                     $timeout(function () {
                         $('.containerbig').addClass('win');
-                        var audio2 = document.getElementById("noyeah");
-                        audio2.play();
                     }, 5500)
                 }
             }
