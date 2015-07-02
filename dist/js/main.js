@@ -15,7 +15,7 @@ var questions = [
         question: "¿De qué casa viene Black & White?",
         options: [
             "Johnnie Walker & Sons.",
-            "Pruoducción Nacional.",
+            "Producción Nacional.",
             "De la prestigiosa Casa Buchanan´s."
         ],
         right: 3
