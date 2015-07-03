@@ -64,12 +64,19 @@ app.controller("mainController", function ($scope, $timeout) {
     $scope.isSet = function (index) {
         return index === $scope.active;
     };
+    $scope.isScoring = false
     this.questions = uquestions;
     $scope.gotoNext = function () {
+
         if ($scope.active < questions.length)
             $scope.active++;
     };
     this.processAnswer = function (q, o) {
+        if($scope.isScoring){
+            console.log("not yet")
+            return
+        }
+        $scope.isScoring = true
         var opt = $('#opt-' + q + '-' + o);
         console.log(q + "   " + o);
         console.log("right: " + this.questions[q].right)
@@ -86,6 +93,9 @@ app.controller("mainController", function ($scope, $timeout) {
             opt.fadeOut(100).delay(500).removeClass("fa-square-o").addClass("fa-check-square-o").fadeIn();
             $timeout(function () {
                 $scope.gotoNext();
+                console.log("done")
+                $scope.isScoring = false
+                console.log($scope.isScoring)
             }, 1500);
             if (q === 2) {
                 var rights = 0;
@@ -120,6 +130,9 @@ app.controller("mainController", function ($scope, $timeout) {
             }, 2500)
             $timeout(function () {
                 $scope.gotoNext();
+                console.log("done")
+                $scope.isScoring = false
+                console.log($scope.isScoring)
             }, 5000);
             opt.fadeOut(100).delay(500).removeClass("fa-square-o").addClass("fa-minus-square").fadeIn();
             if (q === 2) {
