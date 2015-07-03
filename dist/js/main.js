@@ -66,10 +66,12 @@ app.controller("mainController", function ($scope, $timeout) {
     };
     $scope.isScoring = false
     this.questions = uquestions;
-    $scope.gotoNext = function () {
+    $scope.gotoNext = function (q) {
 
-        if ($scope.active < questions.length)
-            $scope.active++;
+        if ($scope.active < questions.length){
+            console.log("next"+q)
+            $scope.active= q+2;
+        }
     };
     this.processAnswer = function (q, o) {
         if($scope.isScoring){
@@ -92,7 +94,7 @@ app.controller("mainController", function ($scope, $timeout) {
             audio.play();
             opt.fadeOut(100).delay(500).removeClass("fa-square-o").addClass("fa-check-square-o").fadeIn();
             $timeout(function () {
-                $scope.gotoNext();
+                $scope.gotoNext(q);
                 console.log("done")
                 $scope.isScoring = false
                 console.log($scope.isScoring)
@@ -129,7 +131,7 @@ app.controller("mainController", function ($scope, $timeout) {
                 audio3.play();
             }, 2500)
             $timeout(function () {
-                $scope.gotoNext();
+                $scope.gotoNext(q);
                 console.log("done")
                 $scope.isScoring = false
                 console.log($scope.isScoring)
